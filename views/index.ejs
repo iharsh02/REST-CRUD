@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quora Posts</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Honk&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <h1>Quora Posts</h1>
+
+    <a href="http://localhost:8080/posts/new" class="new-post"
+      >Create a new post</a
+    >
+
+    <div class="imp">
+      <% for (post of posts){%>
+      <div class="main">
+        <div class="container">
+          <h3 class="user">@<%= post.username%></h3>
+          <p class="Content"><%= post.Content%></p>
+          <a href="http://localhost:8080/posts/<%=post.id%>">See in Details</a>
+          <a href="http://localhost:8080/posts/<%=post.id%>/edit">Edit</a>
+
+          <form method="POST" action="/posts/<%= post.id %>?_method=DELETE">
+
+              <button class="delete">Delete Post</button>
+          </form>
+        </div>
+      </div>
+      <%}%>
+    </div>
+  </body>
+</html>
